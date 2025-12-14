@@ -1,0 +1,32 @@
+{
+  "name": "explorer-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run build && bun run start",
+    "start": "bun --hot dist/server.js",
+    "build": "tsc",
+    "typeorm": "bunx typeorm -d ./typeorm.config.js",
+    "migration:create": "bunx typeorm migration:create",
+    "migration:generate": "bunx typeorm migration:generate src/migrations/AutoMigration -d ./typeorm.config.js",
+    "migration:run": "bunx typeorm migration:run -d ./typeorm.config.js",
+    "migration:revert": "bunx typeorm migration:revert -d ./typeorm.config.js",
+    "seed": "bunx tsx src/scripts/seed.ts"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.4.0",
+    "dotenv": "^16.4.5",
+    "elysia": "^1.4.18",
+    "mysql2": "^3.9.3",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.28"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.1",
+    "esbuild-register": "^3.6.0",
+    "esbuild-runner": "^2.2.2",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.5.0"
+  }
+}
