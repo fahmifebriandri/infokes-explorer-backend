@@ -14,19 +14,39 @@ export const folderService = {
         const folder = await folderRepository.getFolderById(id);
         if (!folder) throw new Error("Folder not found");
         const subfolders = await folderRepository.getSubfolders(id);
-        
+
         // Assign files to each subfolder
         const subfoldersWithFiles = subfolders.map(subfolder => ({
             ...subfolder
         }));
-        
+
         // Also get files directly in the folder
         const filesInFolder = await folderRepository.getFilesInFolder(id);
-        
+
         return {
             subfolders: subfoldersWithFiles,
             filesInFolder
         };
+    },
+
+
+    getFolderPath: async (id: string) => {
+        const path = [];
+
+        let current = await folderRepository.getFolderById(id);
+        if (!current) throw new Error("Folder not found");
+
+        while (current) {
+            path.push({
+                id: current.id,
+                name: current.name
+            });
+
+            if (!current.parent_id) break;
+            current = await folderRepository.getFolderById(current.parent_id);
+        }
+
+        return path.reverse();
     },
 
     searchItems: async (query: string) => {

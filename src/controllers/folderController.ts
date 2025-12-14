@@ -9,6 +9,10 @@ export const folderController = {
         data: await folderService.getSubfolders(id)
     }),
 
+    getPath: async (id: string) => ({
+        data: await folderService.getFolderPath(id)
+    }),
+
     search: async (query: string) => ({
         data: await folderService.searchItems(query)
     }),

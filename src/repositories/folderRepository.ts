@@ -47,6 +47,7 @@ export const folderRepository = {
             .getMany();
     },
 
+    
     searchFolders: async (query: string) => {
         const repo = AppDataSource.getRepository(Folder);
         return repo.createQueryBuilder("folder")

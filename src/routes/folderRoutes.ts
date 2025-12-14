@@ -3,10 +3,18 @@ import { folderController } from "../controllers/folderController";
 
 export const folderRoutes = new Elysia({ prefix: "/folders" })
     .get("/", () => folderController.getAll())
-    .get("/:id", ({ params }) => {
+    
+    .get("/:id/subfolder", ({ params }) => {
         const id = params.id as string;
         return folderController.getSubfolders(id);
     })
+
+    .get("/:id/path", ({ params }) => {
+        const id = params.id as string;
+        return folderController.getPath(id);
+    })
+
+
     .post("/create", ({ body }) => folderController.create(body), {
         body: t.Object({
             type: t.Union([t.Literal('folder'), t.Literal('file')]),
