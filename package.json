@@ -11,7 +11,9 @@
     "migration:generate": "bunx typeorm migration:generate src/migrations/AutoMigration -d ./typeorm.config.js",
     "migration:run": "bunx typeorm migration:run -d ./typeorm.config.js",
     "migration:revert": "bunx typeorm migration:revert -d ./typeorm.config.js",
-    "seed": "bunx tsx src/scripts/seed.ts"
+    "seed": "bunx tsx src/scripts/seed.ts",
+    "test": "vitest",
+    "test:run": "vitest run"
   },
   "dependencies": {
     "@elysiajs/cors": "^1.4.0",
@@ -22,11 +24,13 @@
     "typeorm": "^0.3.28"
   },
   "devDependencies": {
+    "@types/node": "^25.0.2",
     "esbuild": "^0.27.1",
     "esbuild-register": "^3.6.0",
     "esbuild-runner": "^2.2.2",
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
-    "typescript": "^5.5.0"
+    "typescript": "^5.5.0",
+    "vitest": "^4.0.15"
   }
 }

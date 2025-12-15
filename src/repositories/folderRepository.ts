@@ -1,3 +1,5 @@
+// /src/repositories/folderRepository.ts
+
 import { AppDataSource } from "../config/data-source";
 import { Folder } from "../entities/Folder";
 import { FileEntry } from "../entities/FileEntry";

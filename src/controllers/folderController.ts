@@ -1,3 +1,5 @@
+// /src/controllers/folderController.ts
+
 import { folderService } from "../services/folderService";
 
 export const folderController = {

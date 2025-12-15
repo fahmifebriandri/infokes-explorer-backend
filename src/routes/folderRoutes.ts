@@ -1,3 +1,5 @@
+// /src/routes/folderRoutes.ts
+
 import { Elysia, t } from "elysia";
 import { folderController } from "../controllers/folderController";
 

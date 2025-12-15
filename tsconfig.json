@@ -15,11 +15,11 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false,
-
     "declaration": false,
     "isolatedModules": false,
-
-    "plugins": [{ "name": "typescript-plugin-file-extension-in-import" }]
+    "plugins": [{ "name": "typescript-plugin-file-extension-in-import" }],
+    "types": ["vitest/globals"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["dist", "node_modules"]
 }
