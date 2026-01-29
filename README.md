@@ -109,7 +109,7 @@ Mendapatkan semua folder dan semua file.
 }
 ```
 
-### GET /folders/:id
+### GET /folders/:id/subfolder
 Mendapatkan subfolder dari folder tertentu beserta files di dalamnya.
 
 **Parameters:**
