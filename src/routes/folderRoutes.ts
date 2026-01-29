@@ -16,6 +16,10 @@ export const folderRoutes = new Elysia({ prefix: "/folders" })
         return folderController.getPath(id);
     })
 
+    .get("/:id/parentid", ({ params }) => {
+            const id = params.id as string;
+            return folderController.getParentId(id);
+    })
 
     .post("/create", ({ body }) => folderController.create(body), {
         body: t.Object({

@@ -15,6 +15,11 @@ export const folderController = {
         data: await folderService.getFolderPath(id)
     }),
 
+    
+    getParentId: async (id: string) => ({
+        data: await folderService.getParentId(id)
+    }),
+
     search: async (query: string) => ({
         data: await folderService.searchItems(query)
     }),

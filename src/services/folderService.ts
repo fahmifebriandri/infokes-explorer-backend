@@ -51,6 +51,14 @@ export const folderService = {
         return path.reverse();
     },
 
+    getParentId: async (id: string) => {
+        let current = await folderRepository.getFolderById(id);
+        if (!current) throw new Error("Folder not found");
+        return {
+            parent_id : current.parent_id
+        };
+    },
+
     searchItems: async (query: string) => {
         const folders = await folderRepository.searchFolders(query);
         const files = await folderRepository.searchFiles(query);
