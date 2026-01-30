@@ -2,6 +2,7 @@
 
 import { Elysia, t } from "elysia";
 import { folderController } from "../controllers/folderController";
+import { postsController } from "../controllers/postsController";
 
 export const folderRoutes = new Elysia({ prefix: "/folders" })
     .get("/", () => folderController.getAll())
@@ -57,4 +58,34 @@ export const searchRoutes = new Elysia()
             return { error: "Query parameter 'q' is required" };
         }
         return folderController.search(q);
+    });
+
+export const postsRoutes = new Elysia({ prefix: "/posts" })
+    .get("/", () => postsController.getAll())
+    
+    .get("/:id", ({ params }) => {
+        const id = params.id as string;
+        return postsController.getById(id);
+    })
+
+    .post("/", ({ body }) => postsController.create(body), {
+        body: t.Object({
+            title: t.String(),
+            content: t.String(),
+        }),
+    })
+
+    .put("/:id", ({ params, body }) => {
+        const id = params.id as string;
+        return postsController.update(id, body);
+    }, {
+        body: t.Object({
+            title: t.Optional(t.String()),
+            content: t.Optional(t.String()),
+        }),
+    })
+
+    .delete("/:id", ({ params }) => {
+        const id = params.id as string;
+        return postsController.delete(id);
     });

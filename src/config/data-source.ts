@@ -2,6 +2,7 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Folder } from "../entities/Folder";
 import { FileEntry } from "../entities/FileEntry";
+import { Post } from "../entities/Post";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -15,6 +16,6 @@ export const AppDataSource = new DataSource({
     database: process.env.DB_NAME,
     synchronize: true,      // auto sync schema
     logging: false,
-    entities: [Folder, FileEntry],
+    entities: [Folder, FileEntry, Post],
     migrations: ["src/migrations/*.ts"],
 });
